@@ -1,0 +1,9 @@
+<section>
+  <h1> {{albumService.album.title}} - <ng-container *ngIf="albumService.album.member">{{albumService.album.member.name}}</ng-container><ng-container *ngIf="albumService.album.subunit">{{albumService.album.subunit.name}}</ng-container> </h1>
+  <img src="assets/albums/{{albumService.album.picture}}" height="500em" alt="{{albumService.album.picture}}">
+  <button (click)="play()">Jouer</button><button>Ajouter</button>
+  <ul *ngFor="let song of albumService.album.songs">
+    <li> {{song.title}} <ng-container *ngIf="song.featuring?.length!=0"> ft.<ng-container *ngFor="let feat of song.featuring"> {{feat.name}} </ng-container></ng-container>  </li>
+  </ul>
+
+</section>

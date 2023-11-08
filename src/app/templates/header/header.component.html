@@ -1,0 +1,11 @@
+<title> LOONAVERSE</title>
+<ul *ngFor="let route of routes">
+  <li routerLink="{{route.path}}">
+    <ng-container *ngIf="route.component">
+      {{route.component.name.split("Component")[0]}}
+    </ng-container>
+    <ng-container *ngIf="route.loadChildren">
+      {{route.loadChildren.toString().split(".").pop()!.split("Module")[0]}}
+    </ng-container>
+   </li>
+</ul>

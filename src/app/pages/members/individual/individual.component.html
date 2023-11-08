@@ -1,0 +1,11 @@
+<section>
+  <h1> {{memberService.member.name}}</h1>
+  <img src="assets/profils/{{memberService.member.picture}}" height="500em" alt="profil picture">
+  <p>Debut : {{memberService.member.debut}}</p>
+  <p>Animal représentatif : {{memberService.member.animal}}</p>
+  <p> Couleur et forme : {{ memberService.member.color}} {{memberService.member.shape}}</p>
+
+  <p *ngIf="memberService.member.country"> Pays Representatif : {{ memberService.member.country}} </p>
+  <p *ngIf="memberService.member.power"> Pouvoir : {{ memberService.member.power}} </p>
+  <p *ngIf="memberService.member.fruit"> Fruit Representatif : {{ memberService.member.fruit}} </p>
+</section>

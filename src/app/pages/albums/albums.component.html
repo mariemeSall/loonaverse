@@ -1,0 +1,16 @@
+<section>
+  <table>
+    <thead>
+    <th></th>
+    <th>Titre</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let album of albumService.albums">
+      <td>
+        <img src="/assets/albums/{{album.picture}}" alt="{{album.picture}}" height="300em">
+      </td>
+      <td routerLink="/album/{{album.id}}"> {{album.title}} {{album.id}}</td>
+    </tr>
+    </tbody>
+  </table>
+</section>

@@ -1,0 +1,25 @@
+<section >
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      {{ footer.state?.readableCurrentTime }}
+      <mat-slider class="time-slider" min="0" [max]="footer.state?.duration" step="1" (input)="footer.onSliderChangeEnd($event)" [disabled]="footer.state?.error || footer.currentFile.index === undefined"></mat-slider>
+      {{ footer.state?.readableDuration }}
+    </mat-toolbar-row>
+    <mat-toolbar-row class="media-action-bar">
+      <button mat-button [disabled]="footer.isFirstPlaying()" (click)="footer.previous()">
+        <mat-icon mat-list-icon>skip_previous</mat-icon>
+      </button>
+      <button mat-button (click)="footer.play()" [disabled]="footer.state?.error" *ngIf="footer.state?.playing">
+        <mat-icon mat-list-icon>play_circle_filled</mat-icon>
+      </button>
+      <button mat-button (click)="footer.pause()" *ngIf="footer.state?.playing">
+        <mat-icon mat-list-icon>pause</mat-icon>
+      </button>
+      <button  mat-button [disabled]="footer.isLastPlaying()" (click)="footer.next()">
+        <mat-icon mat-list-icon>skip_next</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+</section>
+
