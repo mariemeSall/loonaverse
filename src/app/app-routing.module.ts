@@ -9,6 +9,7 @@ export const routes: Routes = [
   {path:'album', loadChildren: ()=> import('./pages/albums/albums.module').then(m=> m.AlbumsModule)},
 ];
 
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
