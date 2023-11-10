@@ -1,7 +1,10 @@
 <section >
   <mat-toolbar *ngIf="footer.queue.length!==0">
-    <mat-toolbar-row >
-      {{footer.nowPlaying.file.title}} - {{footer.queue[footer.nowPlaying.album].member?.name}} {{footer.queue[footer.nowPlaying.album].subunit?.name}}
+    <mat-toolbar-row class="footer-infos">
+      <img src="assets/albums/{{footer.queue[footer.nowPlaying.album].picture}}" alt="album picture" height="100em" style="margin-right: 1em;">
+      <div>
+        {{footer.nowPlaying.file.title}} - {{footer.queue[footer.nowPlaying.album].member?.name}} {{footer.queue[footer.nowPlaying.album].subunit?.name}}
+      </div>
     </mat-toolbar-row>
     <mat-toolbar-row class="media-action-bar">
       <button mat-button [disabled]="footer.isFirstPlayingCopy() || footer.queue.length===0" (click)="footer.previous()">
@@ -15,6 +18,11 @@
       </button>
       <button  mat-button [disabled]="footer.isLastPlayingCopy() || footer.queue.length===0" (click)="footer.next()">
         <mat-icon mat-list-icon>skip_next</mat-icon>
+      </button>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+      <button mat-button (click)="showQueue()">
+        <mat-icon mat-list-icon>queue_music</mat-icon>
       </button>
     </mat-toolbar-row>
   </mat-toolbar>

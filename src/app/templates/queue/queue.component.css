@@ -1,0 +1,24 @@
+section {
+  background: #29293c;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+li {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  border-bottom-color: #5c5c75;
+  border-bottom: solid;
+  display: flex;
+  flex-direction: row;
+  width: 20vw;
+
+}
+
+.scroll {
+  height: 100%;
+  overflow-y: scroll ;
+}
+

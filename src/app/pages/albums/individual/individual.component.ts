@@ -24,6 +24,7 @@ export class IndividualComponent implements OnInit{
     this.footer.openFileCopy(this.albumService.album.songs[0], 0,0);
     this.footer.play()
   }
+
   add(){
     this.footer.add(this.albumService.album)
   }

@@ -8,7 +8,7 @@ import { Album } from "../models/album";
   providedIn: 'root'
 })
 export class FooterService {
-
+  queueShow: boolean=false;
   state:any;
   currentFile:any = {};
   nowPlaying: {song:number, album:number, file: Song} = {song:0, album:0, file: { title:'', audio:''}}
@@ -81,6 +81,8 @@ export class FooterService {
     if(song ===0){
       album --;
       song = this.queue[album].songs.length -1;
+    } else {
+      song--;
     }
 
     file = this.queue[album].songs[song];
@@ -113,5 +115,33 @@ export class FooterService {
   // @ts-ignore
   onSliderChangeEnd(change) {
     this.songService.seekTo(change.value);
+  }
+
+  songInQueue(){
+    let songs = 0;
+    for (let i = 0; i < this.queue.length; i++) {
+      songs += this.queue[i].songs.length
+
+    }
+
+    return songs;
+  }
+
+  addOneSong(song: Song) {
+    let albumOneSong: Album = {
+      ...this.albumService.album,
+      songs : [song]
+    }
+    this.add(albumOneSong)
+  }
+
+  playOneSong(song: Song){
+    let albumOneSong: Album = {
+      ...this.albumService.album,
+      songs : [song]
+    }
+
+    this.queue = [albumOneSong]
+    this.openFileCopy(song, 0,0)
   }
 }

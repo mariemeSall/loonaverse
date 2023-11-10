@@ -10,13 +10,15 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatLegacyButtonModule } from "@angular/material/legacy-button";
 import { MatLegacyListModule } from "@angular/material/legacy-list";
 import { MatIconModule } from "@angular/material/icon";
+import { QueueComponent } from './templates/queue/queue.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    QueueComponent
   ],
   imports: [
     BrowserModule,

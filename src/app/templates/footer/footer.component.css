@@ -2,9 +2,15 @@ section{
   background-color: #29293c;
 
 }
+button {
 
+  margin-inline: 2em;
+}
+.footer-infos {
+  padding-right: 1em;
+}
 mat-toolbar {
-  height: 5em;
+  height: 7em;
   display: flex;
   flex-direction: row;
 }

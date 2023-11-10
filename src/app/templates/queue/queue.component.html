@@ -1,0 +1,15 @@
+<section class="queue" *ngIf="footer.queueShow">
+  <h2> {{footer.songInQueue()}} Songs</h2>
+  <ul class="scroll">
+    <ng-container *ngFor="let row of [].constructor(footer.queue.length); let album = index">
+      <li *ngFor="let col of [].constructor(footer.queue[album].songs.length); let song = index" (click)="playSong(song, album)">
+        <ng-container *ngIf="album===footer.nowPlaying.album&&song===footer.nowPlaying.song">
+          <mat-icon>music_note</mat-icon>
+        </ng-container>
+        <div>
+          {{footer.queue[album].songs[song].title }} - {{footer.queue[album].member?.name}} {{footer.queue[album].subunit?.name}}
+        </div>
+      </li>
+    </ng-container>
+  </ul>
+</section>

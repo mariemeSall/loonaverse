@@ -1,4 +1,4 @@
-<section>
+<section class="center">
 
   <h1> {{albumService.album.title}} - <ng-container *ngIf="albumService.album.member">{{albumService.album.member.name}}</ng-container><ng-container *ngIf="albumService.album.subunit">{{albumService.album.subunit.name}}</ng-container> </h1>
   <div class="album-image">
@@ -11,7 +11,15 @@
     <div>
       <h2> Titres</h2>
       <ul *ngFor="let song of albumService.album.songs">
-        <li> {{song.title}} <ng-container *ngIf="song.featuring?.length!=0"> ft.<ng-container *ngFor="let feat of song.featuring"> {{feat.name}} </ng-container></ng-container>  </li>
+        <li>
+          <div style="width: 20vw">
+            {{song.title}}
+            <ng-container *ngIf="song.featuring?.length!=0"> ft.<ng-container *ngFor="let feat of song.featuring"> {{feat.name}} </ng-container></ng-container>
+          </div>
+          <div>
+            <button mat-icon-button (click)="footer.playOneSong(song)"><mat-icon mat-list-icon> play_arrow</mat-icon></button><button mat-icon-button (click)="footer.addOneSong(song)"><mat-icon>add</mat-icon></button>
+          </div>
+        </li>
       </ul>
     </div>
 

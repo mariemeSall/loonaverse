@@ -21,9 +21,21 @@ button {
   text-align: center;
 }
 
-ul {
-  list-style-type: none;
-}
+
 div {
   margin: 1em;
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  .mat-icon {
+    width: 1em !important;
+    height: 1em !important;
+    font-size: 1em !important;
+  }
+
+  button {
+    padding-inline: 1em;
+  }
 }

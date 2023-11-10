@@ -12,4 +12,8 @@ import { FooterService } from "../../shared/services/footer.service";
 export class FooterComponent {
  constructor(protected footer: FooterService) {
  }
+
+ showQueue(){
+  this.footer.queueShow = !this.footer.queueShow
+ }
 }

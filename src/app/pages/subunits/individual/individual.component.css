@@ -1,8 +1,22 @@
 .row{
-  grid-template-rows: repeat(6, auto);
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, auto);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .member {
   text-align: center;
+}
+
+.unit {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  text-align: center;
+}
+
+.members{
+  right: 0;
+  position: relative;
+  width: 100%;
+  padding-left: 1em;
 }

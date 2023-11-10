@@ -1,6 +1,9 @@
-<section class="row">
-  <div *ngFor="let member of membersService.members">
-    <img src="assets/profils/{{member.picture}}" height="400em" alt="profil picture" class="route" routerLink="/member/{{member.id}}">
-    <p >  {{member.name}} </p>
-  </div>
-</section>
+<div class="center">
+  <section class="row">
+    <div *ngFor="let member of membersService.members">
+      <img src="assets/profils/{{member.picture}}" height="400em" alt="profil picture" class="route" routerLink="/member/{{member.id}}">
+      <p >  {{member.name}} </p>
+    </div>
+  </section>
+
+</div>

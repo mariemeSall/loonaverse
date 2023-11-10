@@ -1,9 +1,12 @@
-<section>
-  <h1> {{subunitService.subunit.name}} </h1>
-  <img src="assets/profils/{{subunitService.subunit.picture}}" height="500em" alt="profil picture">
-  <p> Début : {{subunitService.subunit.debut}}</p>
+<section class="unit">
+  <div class="profil">
+    <h1> {{subunitService.subunit.name}} </h1>
+    <img src="assets/profils/{{subunitService.subunit.picture}}" height="500em" alt="profil picture">
+    <p> Début : {{subunitService.subunit.debut}}</p>
+  </div>
 
-  <div>
+
+  <div class="members">
     <h2> Members</h2>
     <section class="row">
       <div class="member" *ngFor="let member of subunitService.subunit.members">
