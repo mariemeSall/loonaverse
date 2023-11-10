@@ -10,7 +10,6 @@ import { Album } from "../models/album";
   providedIn: 'root'
 })
 export class SongsService {
-  api = process.env['API_URL'];
 
   constructor() {
   }
@@ -33,6 +32,7 @@ export class SongsService {
     currentTime: undefined,
     canplay: false,
     error: false,
+    ended: false,
   };
 
   private stateChange: BehaviorSubject<StreamState> = new BehaviorSubject(
@@ -46,6 +46,7 @@ export class SongsService {
       this.audioObj.play();
 
       const handler = (event: Event) => {
+        this.updateStateEvents(event);
         observer.next(event);
       };
 
@@ -111,6 +112,8 @@ export class SongsService {
         this.resetState();
         this.state.error = true;
         break;
+      case "ended":
+        this.state.ended =true;
     }
     this.stateChange.next(this.state);
   }
@@ -120,7 +123,8 @@ export class SongsService {
       duration: undefined,
       currentTime: undefined,
       canplay: false,
-      error: false
+      error: false,
+      ended: false
     };
   }
 

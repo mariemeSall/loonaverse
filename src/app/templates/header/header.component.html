@@ -1,6 +1,7 @@
-<title> LOONAVERSE</title>
-<ul *ngFor="let route of routes">
-  <li routerLink="{{route.path}}">
+<section>
+<h1> LOONAVERSE</h1>
+<ul >
+  <li routerLink="{{route.path}}" *ngFor="let route of routes">
     <ng-container *ngIf="route.component">
       {{route.component.name.split("Component")[0]}}
     </ng-container>
@@ -9,3 +10,4 @@
     </ng-container>
    </li>
 </ul>
+</section>

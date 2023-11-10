@@ -1,1 +1,6 @@
-<p>subunits works!</p>
+<section class="row">
+  <div *ngFor="let subunit of subunitService.subunits">
+    <img src="assets/profils/{{subunit.picture}}" height="400em" alt="profil picture" class="route" routerLink="/subunit/{{subunit.id}}">
+    <p>  {{subunit.name}} </p>
+  </div>
+</section>

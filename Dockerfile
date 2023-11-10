@@ -3,8 +3,8 @@ SHELL ["/bin/bash", "-c"]
 ENV NVM_DIR /usr/local/.nvm
 ENV NODE_VERSION v18.16
 RUN mkdir $NVM_DIR
+RUN cat /etc/resolv.conf
 RUN apt-get update && apt-get -y install curl
-
 RUN curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 ENV NODE_PATH $NVM_DIR/$NODE_VERSION/lib/node_modules
 ENV PATH $NVM_DIR/versions/node/$NODE_VERSION/bin:$PATH

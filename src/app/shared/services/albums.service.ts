@@ -13,22 +13,14 @@ export class AlbumsService {
     date: new Date("00-00-00"),
     picture:'',
     title: '',
-  }
-  albumPlaying: Album = {
-    id:0,
-    songs:[],
-    date: new Date("00-00-00"),
-    picture:'',
-    title: '',
-  }
-  api = process.env['API_URL'];
+  };
 
-  albums: Album[]=[]
+  albums: Album[]=[];
   constructor(private http : HttpClient) {
   }
 
   getAll(){
-    this.http.get<HttpResponse<Array<Album>>>(`${this.api}/album`).subscribe({
+    this.http.get<HttpResponse<Array<Album>>>(`api/album`).subscribe({
       next: (n)=> {
         this.albums = n.data
       }
@@ -36,7 +28,7 @@ export class AlbumsService {
   }
 
   getOne(id: number){
-    this.http.get<HttpResponse<Album>>(`${this.api}/album/${id}`).subscribe(
+    this.http.get<HttpResponse<Album>>(`api/album/${id}`).subscribe(
       { next: (n)=> {
         this.album = n.data; console.log(this.album)
         } }

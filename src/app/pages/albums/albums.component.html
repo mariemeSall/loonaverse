@@ -1,16 +1,12 @@
-<section>
-  <table>
-    <thead>
-    <th></th>
-    <th>Titre</th>
-    </thead>
-    <tbody>
-    <tr *ngFor="let album of albumService.albums">
-      <td>
-        <img src="/assets/albums/{{album.picture}}" alt="{{album.picture}}" height="300em">
-      </td>
-      <td routerLink="/album/{{album.id}}"> {{album.title}} {{album.id}}</td>
-    </tr>
-    </tbody>
-  </table>
+<section >
+  <h1> Albums</h1>
+  <ng-container *ngFor="let y of year">
+    <h2>{{y}}</h2>
+    <div class="row">
+      <ng-container *ngFor="let album of albumService.albums">
+        <img *ngIf="+album.date.toString().split('-')[0]===y" class="route" src="/assets/albums/{{album.picture}}" alt="{{album.picture}}" height="300em" routerLink="/album/{{album.id}}">
+      </ng-container>
+    </div>
+  </ng-container>
+
 </section>

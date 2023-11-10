@@ -6,11 +6,10 @@ import { AccueilComponent } from './pages/accueil/accueil.component';
 import { HeaderComponent } from './templates/header/header.component';
 import { HttpClientModule } from "@angular/common/http";
 import { FooterComponent } from './templates/footer/footer.component';
-import { MatIconModule } from "@angular/material/icon";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatSliderModule } from "@angular/material/slider";
-import { MatButtonModule } from "@angular/material/button";
+import { MatLegacyButtonModule } from "@angular/material/legacy-button";
 import { MatLegacyListModule } from "@angular/material/legacy-list";
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -23,11 +22,10 @@ import { MatLegacyListModule } from "@angular/material/legacy-list";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatIconModule,
     MatToolbarModule,
-    MatSliderModule,
-    MatButtonModule,
-    MatLegacyListModule
+    MatLegacyButtonModule,
+    MatLegacyListModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { SongsService } from "./songs.service";
 import { AlbumsService } from "./albums.service";
 import { Song } from "../models/song";
+import { Album } from "../models/album";
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,22 @@ export class FooterService {
 
   state:any;
   currentFile:any = {};
+  nowPlaying: {song:number, album:number, file: Song} = {song:0, album:0, file: { title:'', audio:''}}
+  albumPlaying: Album = {
+    id:0,
+    songs:[],
+    date: new Date("00-00-00"),
+    picture:'',
+    title: '',
+  };
+  queue: Album[] = [];
 
-
-  constructor(protected songService: SongsService, protected albumService: AlbumsService) {
+  constructor(protected songService: SongsService, public albumService: AlbumsService) {
     this.songService.getState().subscribe(state => {
-      this.state = state;
+      if( state.ended&&!this.isLastPlayingCopy()) {
+        this.next();
+      }
+        this.state = state;
     });
   }
   playStream(url:string) {
@@ -25,6 +37,12 @@ export class FooterService {
 
   openFile(file:Song, index:number) {
     this.currentFile = {index, file}
+    this.songService.stop();
+    this.playStream("assets/songs/"+file.audio);
+  }
+
+  openFileCopy(file: Song, song:number, album: number) {
+    this.nowPlaying = {song, album, file}
     this.songService.stop();
     this.playStream("assets/songs/"+file.audio);
   }
@@ -40,15 +58,44 @@ export class FooterService {
   }
 
   next() {
+    let song = this.nowPlaying.song +1;
+    let album = this.nowPlaying.album;
+    if(song === this.queue[album].songs.length){
+      song=0;
+      album++;
+    }
+    let file = this.queue[album].songs[song];
+    this.openFileCopy(file,song,album);
     const index = this.currentFile.index + 1;
-    const file = this.albumService.albumPlaying.songs[index];
-    this.openFile(file, index);
+     file = this.albumPlaying.songs[index];
+    //this.openFile(file, index);
   }
 
   previous() {
     const index = this.currentFile.index - 1;
-    const file = this.albumService.albumPlaying.songs[index];
-    this.openFile(file, index);
+    let file = this.albumPlaying.songs[index];
+    //this.openFile(file, index);
+
+    let song = this.nowPlaying.song ;
+    let album = this.nowPlaying.album;
+    if(song ===0){
+      album --;
+      song = this.queue[album].songs.length -1;
+    }
+
+    file = this.queue[album].songs[song];
+    this.openFileCopy(file, song, album);
+
+  }
+
+  isFirstPlayingCopy(){
+    return this.nowPlaying.song===0 && this.nowPlaying.album===0;
+  }
+
+  isLastPlayingCopy(){
+    const song = this.nowPlaying.song;
+    const album = this.nowPlaying.album;
+    return (song === this.queue[album].songs.length -1) && (album===this.queue.length-1)
   }
 
   isFirstPlaying() {
@@ -56,9 +103,13 @@ export class FooterService {
   }
 
   isLastPlaying() {
-    return this.currentFile.index === this.albumService.albumPlaying.songs.length - 1;
+    return (this.currentFile.index === (this.albumPlaying.songs.length - 1))&&this.queue.length===0;
   }
 
+  add(album:Album){
+    this.queue.push(album)
+
+  }
   // @ts-ignore
   onSliderChangeEnd(change) {
     this.songService.seekTo(change.value);

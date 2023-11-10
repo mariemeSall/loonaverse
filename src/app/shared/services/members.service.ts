@@ -20,21 +20,21 @@ export class MembersService {
     number:0,
     shape: '',
   };
-
-  api = process.env['API_URL'];
   constructor(private http: HttpClient) {
     this.getMembers()
   }
 
   getMembers() {
-    this.http.get<HttpResponse<Array<Member>>>(`${this.api?.trim()}/member`).subscribe({
+    this.http.get<HttpResponse<Array<Member>>>(`api/member`).subscribe({
       next:(m => {this.members = m.data})
     })
   }
 
   getMember(id: number) {
-    this.http.get<HttpResponse<Member>>(`${this.api?.trim()}/member/${id}`).subscribe({
+    this.http.get<HttpResponse<Member>>(`api/member/${id}`).subscribe({
       next:(m => {this.member = m.data})
     })
+
   }
+
 }

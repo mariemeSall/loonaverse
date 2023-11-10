@@ -11,6 +11,7 @@ import { Router } from "@angular/router";
 export class IndividualComponent implements OnInit{
   id: number = 0;
 
+
     constructor(protected memberService: MembersService, private router: Router) {
     }
 

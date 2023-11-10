@@ -1,18 +1,6 @@
-<section>
-  <table>
-    <thead>
-    <th></th>
-    <th>Nom</th>
-    <th>Debut</th>
-    </thead>
-    <tbody>
-    <tr *ngFor="let member of membersService.members">
-      <td>
-        <img src="/assets/profils/{{member.picture}}" alt="{{member.picture}}" height="300em">
-      </td>
-      <td routerLink="/member/{{member.number}}"> {{member.name}}</td>
-      <td> {{member.debut}}</td>
-    </tr>
-    </tbody>
-  </table>
+<section class="row">
+  <div *ngFor="let member of membersService.members">
+    <img src="assets/profils/{{member.picture}}" height="400em" alt="profil picture" class="route" routerLink="/member/{{member.id}}">
+    <p >  {{member.name}} </p>
+  </div>
 </section>

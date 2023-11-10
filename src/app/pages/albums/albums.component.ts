@@ -7,6 +7,7 @@ import { AlbumsService } from "../../shared/services/albums.service";
   styleUrls: ['./albums.component.css']
 })
 export class AlbumsComponent implements  OnInit{
+  year: number[] = [2016,2017,2018,2019,2020,2021,2022,2023]
 constructor(protected albumService: AlbumsService) {
 }
 

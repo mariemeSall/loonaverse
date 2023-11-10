@@ -60,6 +60,9 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "options": {
+            "proxyConfig": "src/proxy.config.json"
+          },
           "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {

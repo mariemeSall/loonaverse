@@ -19,8 +19,12 @@ export class IndividualComponent implements OnInit{
     this.albumService.getOne(this.id)
   }
   play(){
-    this.albumService.albumPlaying = this.albumService.album
-    this.footer.openFile(this.albumService.album.songs[0], 0);
+
+    this.footer.queue = [this.albumService.album]
+    this.footer.openFileCopy(this.albumService.album.songs[0], 0,0);
     this.footer.play()
+  }
+  add(){
+    this.footer.add(this.albumService.album)
   }
 }
