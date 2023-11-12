@@ -18,5 +18,7 @@ export class IndividualComponent implements OnInit{
   ngOnInit(): void {
     this.id = +this.router.url.split("member/")[1];
     this.memberService.getMember(this.id)
+    this.memberService.getAlbums(this.id)
   }
+
 }

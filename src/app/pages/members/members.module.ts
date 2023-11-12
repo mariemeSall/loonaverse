@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MembersRoutingModule } from './members-routing.module';
 import { IndividualComponent } from './individual/individual.component';
 import { MembersComponent } from './members.component';
+import { MatIconModule } from "@angular/material/icon";
 
 
 @NgModule({
@@ -11,9 +12,10 @@ import { MembersComponent } from './members.component';
     IndividualComponent,
     MembersComponent
   ],
-  imports: [
-    CommonModule,
-    MembersRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        MembersRoutingModule,
+        MatIconModule
+    ]
 })
 export class MembersModule { }

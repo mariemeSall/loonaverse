@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Member } from "../models/member";
 import { HttpClient } from "@angular/common/http";
 import { HttpResponse } from "../models/http-response";
+import { Album } from "../models/album";
 
 
 @Injectable({
@@ -9,6 +10,7 @@ import { HttpResponse } from "../models/http-response";
 })
 export class MembersService {
   members: Member[] = [];
+  albums: Album[] = [];
   member : Member ={
     id:0,
     debut: new Date("00-00-00"),
@@ -35,6 +37,11 @@ export class MembersService {
       next:(m => {this.member = m.data})
     })
 
+  }
+  getAlbums(id: number){
+    this.http.get<HttpResponse<Album[]>>(`api/album/member/${id}`).subscribe({
+      next: (n=> {this.albums = n.data})
+    })
   }
 
 }

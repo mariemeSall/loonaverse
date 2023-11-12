@@ -1,4 +1,5 @@
 <div class="center">
+  <h1 class="title"> Members</h1>
   <section class="row">
     <div *ngFor="let member of membersService.members">
       <img src="assets/profils/{{member.picture}}" height="400em" alt="profil picture" class="route" routerLink="/member/{{member.id}}">
